@@ -6,11 +6,19 @@ from sklearn.linear_model import LogisticRegression
 import seaborn as sns
 import copy
 
-
+# modelar la incertidumbre, en particular la de naturaleza probabilística
 
 data = pd.read_csv("customer marketing_campaign.csv")
 #  obtener el tamano del conjunto de datos, visualizar algunos de sus componentes,
+#  y obtener un resumen de los datos estadisticos, media mediana moda, varianza,
+#  recorrido intercuartilico, coeficiente de desviacion
+# medidas de asimetria
+#  desviacion standar, correlacion, regresion,
+#  ver si se puede realizar una tabla de frecuencias,
+#  que tipo de distribucion tinene los datos normal, ...
+#
 data.shape
+
 
 
 
@@ -30,7 +38,15 @@ data.shape
 
 
 
-
+def propagate(w, b, X, Y): # este codig lo escribio codeium asi que toca revisarlo bien
+    m = X.shape[1]
+    A = sigmoid(np.dot(w.T, X) + b)
+    cost = (-1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1 - A))
+    dw = (1 / m) * np.dot(X, (A - Y).T)
+    db = (1 / m) * np.sum(A - Y)
+    grads = {"dw": dw,
+             "db": db}
+    return grads, cost
 
 # sigmoid, computar el costo de la funcion
 
