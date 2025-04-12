@@ -123,16 +123,17 @@ print(correlation['Response'].sort_values(ascending=False))
 # --------------- Entrenamiento modelo----------------------------------------------------
 
 
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+
+
 def cost_function(X, y, w, b):
     m = X.shape[0]
     z = np.dot(X, w) + b
     y_hat = sigmoid(z)
-    cost = -np.mean(y * np.log(y_hat + 1e-10) + (1 - y) * np.log(1 - y_hat + 1e-10))  # 1e-10 evita log(0)
+    cost = -np.mean(y * np.log(y_hat + 1e-10) + (1 - y) * np.log(1 - y_hat + 1e-10))
     return cost
-
-
-def sigmoid(z):
-    return 1 / (1 + np.exp(-z))
 
 
 
@@ -154,7 +155,7 @@ def train_logistic_regression(X, y, learning_rate=0.01, epochs=1000):
         w -= learning_rate * dw
         b -= learning_rate * db
 
-        # Costo (opcional: para monitoreo)
+
         if _ % 100 == 0:
             cost = cost_function(X, y, w, b)
             print(f"Epoch {_}, Cost: {cost}")
