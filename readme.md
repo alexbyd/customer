@@ -133,13 +133,15 @@ $J(w,b)=-\frac{1}{m}\sum_{i=1}^m[y_ilog⁡(y_i)+(1−yi)log⁡(1−y_i)]$
 
 Datos estandarizados (StandardScaler) para asegurar que todas las características contribuyan equitativamente.
 
-Selección de parámetros e hiperparámetros:
-Parámetros del modelo:
-w: Vector de pesos inicializado en ceros (np.zeros(n)), donde n es el número de características (21 numericas en este caso).
+### Selección de parámetros e hiperparámetros:
 
-b: Sesgo inicializado en 0.
 
-Hiperparámetros:
+w-> Vector de pesos inicializado en ceros (np.zeros(n)), donde n es el número de características (21 numericas en este caso).
+
+b-> Sesgo inicializado en 0.
+
+**Hiperparámetros:**
+
 learning_rate=0.01: Tasa de aprendizaje para el descenso de gradiente.
 
 Epochs=1000: Número de iteraciones para entrenar el modelo.
