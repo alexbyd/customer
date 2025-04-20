@@ -81,7 +81,7 @@ Las demás variables son de tipo int64
 
 
 
-## **Limpieza de datos y suposiciones**
+## **Limpieza de Datos**
     
  
 Corrección de valores atípicos: Detectar y tratar outliers
@@ -117,14 +117,8 @@ Probabilidades: Proporciona probabilidades, útiles para decisiones basadas en r
 
 
 # Modelo y parámetros
-    
-Detalle los modelos utilizados, incluyendo la selección de parámetros específicos e hiperparámetros. 
-Si ha realizado ajustes de hiperparámetros, proporcione una descripción general de su estrategia de búsqueda 
-y la justificación de los valores seleccionados.
-    
 
-
-Detalle del modelo utilizado: Regresión logística 
+Modelo utilizado: Regresión logística 
 
 Descripción:
 
@@ -137,11 +131,6 @@ Entrenado mediante descenso de gradiente para minimizar la función de costo de 
 
 $J(w,b)=-\frac{1}{m}\sum_{i=1}^m[y_ilog⁡(y_i)+(1−yi)log⁡(1−y_i)]$
 
-
-
-
-
-
 Datos estandarizados (StandardScaler) para asegurar que todas las características contribuyan equitativamente.
 
 Selección de parámetros e hiperparámetros:
@@ -153,9 +142,9 @@ b: Sesgo inicializado en 0.
 Hiperparámetros:
 learning_rate=0.01: Tasa de aprendizaje para el descenso de gradiente.
 
-epochs=1000: Número de iteraciones para entrenar el modelo.
+Epochs=1000: Número de iteraciones para entrenar el modelo.
 
-Umbral de clasificación: 0.5 (en y_pred_class = (y_pred >= 0.5).astype(int)).
+Umbral de clasificación: 0.5 (en y_pred_class = (y_pred >= 0.5)
 
 
 #  Código y flujo de trabajo computacional
@@ -164,7 +153,7 @@ Umbral de clasificación: 0.5 (en y_pred_class = (y_pred >= 0.5).astype(int)).
 
   
     
-    requirements.txt 
+> pip install -r requirements.txt 
 
 
 #  Resultados e interpretaciones
