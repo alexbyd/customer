@@ -6,7 +6,7 @@ tomar decisiones informadas sobre la asignacion de recursos.
 
 ## Objetivos
 
-El objetivo de este proyecto es predecir quien respondera a una oferta de un 
+El objetivo de este proyecto es predecir el cliente ideal, quien respondera a una oferta de un 
 producto o servicio.
 
 La principal variable a predecir es la cantidad de personas que responderan a la oferta.
@@ -17,12 +17,12 @@ procedimientos operativos en las campañas de publicidad.
 
 ## Resumen de datos
 
-**Fuentes de datos**
+### **Fuentes de datos**
 
 Kaggle  **[Marketing Campaign](https://www.kaggle.com/datasets/rodsaldanha/arketing-campaign)**
 
 
- **Descripción de los datos**
+### **Descripción de los datos**
 
 Tipo de variables:
 
@@ -81,18 +81,18 @@ Las demás variables son de tipo int64
 
 
 
-**Limpieza de datos y suposiciones**
+## **Limpieza de datos y suposiciones**
     
  
-   Corrección de valores atípicos: Detectar y tratar outliers 
-   
-Corrección de valores faltantes: Imputación de datos faltantes
+Corrección de valores atípicos: Detectar y tratar outliers
+
+Corrección de valores faltantes: Imputación de datos faltantes con la media
 
 #  Metodología
 
 
 
-**Regresión logística**
+### **Regresión logística**
 
 Problemas de clasificación binaria. Modela la probabilidad de que una
 observación pertenezca a una clase
@@ -103,36 +103,20 @@ $P(y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots)}}$
 
 Predice probabilidades y asigna clases (0, 1).
 
-**Uso en el contexto**
+### **Uso en el contexto**
 
 Queremos predecir si un cliente responderá positivamente a una oferta de un producto o servicio.
 Esto ayuda a la planeación estratégica: identificar productos o servicios con mayor potencial de ventas y permite priorizar recursos.
 
-**Por qué se elige**
+### **Por qué se elige**
 
 Clasificación binaria: El problema es binario (Respuesta positiva o negativa).
 
 Probabilidades: Proporciona probabilidades, útiles para decisiones basadas en riesgo (por ejemplo, "80% de probabilidad de aceptar la oferta").
 
-<!--
-## Interpretación
-Predicciones: El modelo predice correctamente que X_test[0] (ventas=150) es clase 0 (ventas bajas) y X_test[1] (ventas=250) es clase 1 (ventas altas).
-
-Probabilidades: Muestra la probabilidad de cada clase (por ejemplo, 75% de probabilidad de ventas altas para X_test[1]).
-
-Coeficientes: Un coeficiente positivo para ventas indica que un aumento en ventas incrementa la probabilidad de clase 1; un coeficiente negativo para precio sugiere que precios más altos reducen la probabilidad de ventas altas.
-
-Normalización: Usar X_train_norm y X_test_norm (normalizados con MinMaxScaler) asegura que las variables contribuyan equitativamente al modelo.
--->
-# Prueba de hipótesis
 
 
-**Supuestos**
-
-[ regresión logistica](https://julius.ai/articles/decoding-the-core-assumptions-of-logistic-regression)
-
-
-# Modelos y parámetros
+# Modelo y parámetros
     
 Detalle los modelos utilizados, incluyendo la selección de parámetros específicos e hiperparámetros. 
 Si ha realizado ajustes de hiperparámetros, proporcione una descripción general de su estrategia de búsqueda 
@@ -176,36 +160,51 @@ Umbral de clasificación: 0.5 (en y_pred_class = (y_pred >= 0.5).astype(int)).
 
 #  Código y flujo de trabajo computacional
 
-**Especificaciones del entorno**
+### **Especificaciones del entorno**
 
   
     
     requirements.txt 
 
-<!--
+
 #  Resultados e interpretaciones
 
-Es crucial no solo presentar los resultados, sino también interpretarlos en el contexto del problema original. Esto implica tener:
+Tamaño del dataset:
+Original: 2240 filas.
 
-- **Resumen de los hallazgos**
-    
-    : un resumen conciso de las ideas clave derivadas del análisis, idealmente presentadas mediante gráficos y tablas.
-    
-- **Significancia estadística**[la prueba de hipótesis](https://www.statology.org/hypothesis-testing/)
-    
-    : Para
-    
-    , indique claramente los valores p y explique sus implicaciones. Además, proporcione intervalos de confianza para los parámetros estimados, cuando corresponda.
-    
-- **Limitaciones del análisis**
-    
-    : Mencione cualquier limitación inherente a sus modelos, por ejemplo, sobreajuste, falta de generalización o variables omitidas.
-    
-- **Visualización**[y estén claramente etiquetados para indicar lo que se muestra](https://www.statology.org/5-data-visualization-techniques-to-make-your-findings-stand-out/)
-    
-    : Las representaciones visuales suelen ser más intuitivas. Asegúrese de que todos los gráficos y diagramas incluyan descripciones
+Después de IQR: 989 filas (56% de reducción).
 
+Conjunto de entrenamiento: 791 filas.
+
+Conjunto de prueba: 198 filas.
+
+Proporción de Response = 1
+antes de IQR: 0.1491 (aproximadamente 334 clientes con Response=1 de 2240).
+
+Después de IQR: 0.0900 (aproximadamente 89 clientes con Response=1 de 989).
+Observación: La limpieza con IQR eliminó una proporción significativa de clientes con Response=1, lo que podría sesgar el modelo hacia la clase mayoritaria (Response=0).
+
+## **Rendimiento del modelo:**
+
+Precisión: 0.9141 (91.41% de predicciones correctas en el conjunto de prueba).
+
+F1-score: 0.3704 es bajo  37.04% lo que indica que muchos clientes ideales no estan siendo detectados debido a la perdida de casos response = 1. 
+
+AUC-ROC: 0.9018 es alta 90.18%, lo que indica que el modelo discrimina entre Response=1 y Response=0.
+
+Costo: Disminuyó de 0.691 a 0.250 en 1000 épocas, indicando convergencia del modelo.
+
+<!--
+**Supuestos**
+
+[ regresión logistica](https://julius.ai/articles/decoding-the-core-assumptions-of-logistic-regression)
+
+Independencia: 
+Multicolinealidad: 
+Linealidad con log-odds: 
+Tamaño de muestra: 
 -->
+>   A mis hijos jhoan y alex.
 
 -------------------------------------------------------------
 
