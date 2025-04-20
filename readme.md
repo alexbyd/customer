@@ -136,15 +136,15 @@ Datos estandarizados (StandardScaler) para asegurar que todas las característic
 ### Selección de parámetros e hiperparámetros:
 
 
-w-> Vector de pesos inicializado en ceros (np.zeros(n)), donde n es el número de características (21 numericas en este caso).
+**w**: Vector de pesos inicializado en ceros (np.zeros(n)), donde n es el número de características (21 numericas en este caso).
 
-b-> Sesgo inicializado en 0.
+**b**: Sesgo inicializado en 0.
 
 **Hiperparámetros:**
 
-learning_rate=0.01: Tasa de aprendizaje para el descenso de gradiente.
+learning_rate = 0.01 Tasa de aprendizaje para el descenso de gradiente.
 
-Epochs=1000: Número de iteraciones para entrenar el modelo.
+Epochs = 1000 Número de iteraciones para entrenar el modelo.
 
 Umbral de clasificación: 0.5 (en y_pred_class = (y_pred >= 0.5)
 

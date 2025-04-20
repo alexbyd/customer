@@ -2,18 +2,10 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-import matplotlib.pyplot as plt
-import sklearn as sk
-from debugpy.common.timestamp import reset
-from sklearn.linear_model import LogisticRegression
-import seaborn as sns
-import copy
-import scipy
-from scipy import constants
-import statsmodels.api as sm
+#import pyspark as ps
+#from pyspark.sql import SparkSession
+#spark=SparkSession.builder.appName('Practise').getOrCreate()
 # docker run -it --rm spark:python3 /opt/spark/bin/pyspark
 #pip install pyspark
 
